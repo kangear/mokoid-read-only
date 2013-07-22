@@ -1,0 +1,60 @@
+.
+|-- Android.mk
+|-- apps
+|   |-- Android.mk
+|   |-- LedClient
+|   |   |-- AndroidManifest.xml
+|   |   |-- Android.mk
+|   |   `-- src
+|   |       `-- com
+|   |           `-- mokoid
+|   |               `-- LedClient
+|   |                   `-- LedClient.java
+|   `-- LedTest
+|       |-- AndroidManifest.xml
+|       |-- Android.mk
+|       `-- src
+|           `-- com
+|               `-- mokoid
+|                   `-- LedTest
+|                       |-- LedSystemServer.java
+|                       `-- LedTest.java
+|-- file_tree
+|-- frameworks
+|   |-- Android.mk
+|   `-- base
+|       |-- Android.mk
+|       |-- core
+|       |   `-- java
+|       |       `-- mokoid
+|       |           `-- hardware
+|       |               |-- ILedService.aidl
+|       |               `-- LedManager.java
+|       `-- service
+|           |-- Android.mk
+|           |-- com.mokoid.server.xml
+|           |-- java
+|           |   `-- com
+|           |       `-- mokoid
+|           |           `-- server
+|           |               `-- LedService.java
+|           `-- jni
+|               |-- Android.mk
+|               `-- com_mokoid_server_LedService.cpp
+|-- hardware
+|   |-- Android.mk
+|   |-- libled
+|   |   |-- Android.mk
+|   |   `-- libled.c
+|   `-- modules
+|       |-- Android.mk
+|       |-- include
+|       |   `-- mokoid
+|       |       `-- led.h
+|       `-- led
+|           |-- Android.mk
+|           `-- led.c
+|-- README.txt
+`-- tags
+
+29 directories, 28 files
