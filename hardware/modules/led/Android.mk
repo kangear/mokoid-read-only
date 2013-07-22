@@ -25,24 +25,14 @@ include $(CLEAR_VARS)
 LOCAL_C_INCLUDES += \
 	vendor/mokoid/hardware/modules/include/
 
+LOCAL_MODULE_TAGS := optional
 # HAL module implemenation, not prelinked and stored in
 # hw/<OVERLAY_HARDWARE_MODULE_ID>.<ro.product.board>.so
 LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog
-LOCAL_SRC_FILES := led.goldfish.c
-LOCAL_MODULE := led.goldfish
+LOCAL_SRC_FILES := led.c
+#LOCAL_MODULE := led.goldfish
+LOCAL_MODULE := led.default
 include $(BUILD_SHARED_LIBRARY)
 
-# Mokoid LED
-include $(CLEAR_VARS)
-
-LOCAL_C_INCLUDES += \
-	vendor/mokoid/hardware/modules/include/
-
-LOCAL_PRELINK_MODULE := false
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_SHARED_LIBRARIES := liblog
-LOCAL_SRC_FILES := led.dma6410xp.c
-LOCAL_MODULE := led.smdk6410
-include $(BUILD_SHARED_LIBRARY)

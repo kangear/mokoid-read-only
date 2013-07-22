@@ -23,7 +23,8 @@
 #include <assert.h>
 
 #include <jni.h>
-#include <mokoid/led.h>
+//#include <mokoid/led.h>
+#include "../../../../hardware/modules/include/mokoid/led.h"
 
 // ----------------------------------------------------------------------------
 
@@ -114,3 +115,47 @@ int register_mokoid_server_LedService(JNIEnv* env) {
     /* fill out the rest of the ID cache */
     return 0;
 }
+static int registerMethods(JNIEnv* env) {
+		static const char* const kClassName =
+					"com/mokoid/server/LedService";
+		jclass clazz; 
+    	/* look up the class */
+		clazz = env->FindClass(kClassName);
+		if (clazz == NULL) {
+							LOGE("Can't find class %s\n", kClassName);
+							return -1;
+		}
+
+			/* register all the methods */
+		if (env->RegisterNatives(clazz, gMethods,
+							sizeof(gMethods) / sizeof(gMethods[0])) != JNI_OK)
+		{
+			LOGE("Failed registering methods for %s\n", kClassName);
+			return -1;
+		}
+	/* fill out the rest of the ID cache */
+		return 0;
+} 
+/*
+ *
+ * This is called by the VM when the shared library is first loaded.
+ */ 
+jint JNI_OnLoad(JavaVM* vm, void* reserved) {
+		JNIEnv* env = NULL;
+		jint result = -1;
+		LOGI("JNI_OnLoad LED");
+     	if (vm->GetEnv((void**) &env, JNI_VERSION_1_4) != JNI_OK) {
+			LOGE("ERROR: GetEnv failed\n");
+			goto fail;
+		}
+	    assert(env != NULL);
+		if (registerMethods(env) != 0) {
+			LOGE("ERROR: PlatformLibrary native registration failed\n");
+			goto fail;
+		}
+		/* success -- return valid version number */	
+		result = JNI_VERSION_1_4;
+fail:
+		return result;
+} 
+

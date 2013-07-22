@@ -31,7 +31,6 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)
 
 # All of the source files that we will compile.
 LOCAL_SRC_FILES:= \
-	onload.cpp \
 	com_mokoid_server_LedService.cpp
 
 # All of the shared libraries we link against.

@@ -24,7 +24,8 @@
 #include <cutils/log.h>
 #include <cutils/atomic.h>
 
-#include <mokoid/led.h>
+//#include <mokoid/led.h>
+#include "../include/mokoid/led.h"
 
 /*****************************************************************************/
 

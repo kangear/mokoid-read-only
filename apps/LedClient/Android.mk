@@ -19,7 +19,7 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE_TAGS := user
+LOCAL_MODULE_TAGS := optional
 
 # This is the target being built.
 LOCAL_PACKAGE_NAME := LedClient
